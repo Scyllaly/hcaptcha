@@ -1,6 +1,6 @@
 <?php
 
-use ssrpanel\hCaptcha\hCaptcha;
+use SSRPanel\HCaptcha\HCaptcha;
 
 class HCaptchaTest extends PHPUnit_Framework_TestCase
 {
