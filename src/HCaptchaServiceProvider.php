@@ -54,11 +54,11 @@ class HCaptchaServiceProvider extends ServiceProvider
     {
         $this->app->singleton('HCaptcha', function ($app) {
             if ($app['config']['HCaptcha.server-get-config']) {
-                $googleCaptcha = \App\Components\CaptchaVerify::hCaptchaGetConfig();
+                $hCaptcha = \App\Components\CaptchaVerify::hCaptchaGetConfig();
                 return new HCaptcha(
-                    $googleCaptcha['secret'],
-                    $googleCaptcha['sitekey'],
-                    $googleCaptcha['options']
+                    $hCaptcha['secret'],
+                    $hCaptcha['sitekey'],
+                    $hCaptcha['options']
                 );
             } else {
                 return new HCaptcha(
