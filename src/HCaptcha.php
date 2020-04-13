@@ -1,6 +1,6 @@
 <?php
 
-namespace ssrpanel\HCaptcha;
+namespace SSRPanel\HCaptcha;
 
 use Symfony\Component\HttpFoundation\Request;
 use GuzzleHttp\Client;
