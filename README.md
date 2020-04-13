@@ -16,19 +16,19 @@ In `app/config/app.php` add the following :
 1- The ServiceProvider to the providers array :
 
 ```php
-ssrpanel\HCaptcha\HCaptchaServiceProvider::class,
+SSRPanel\HCaptcha\HCaptchaServiceProvider::class,
 ```
 
 2- The class alias to the aliases array :
 
 ```php
-'HCaptcha' => ssrpanel\HCaptcha\Facades\HCaptcha::class,
+'HCaptcha' => SSRPanel\HCaptcha\Facades\HCaptcha::class,
 ```
 
 3- Publish the config file
 
 ```ssh
-php artisan vendor:publish --provider="ssrpanel\HCaptcha\HCaptchaServiceProvider"
+php artisan vendor:publish --provider="SSRPanel\HCaptcha\HCaptchaServiceProvider"
 ```
 
 ### Configuration
@@ -163,7 +163,7 @@ require_once "vendor/autoload.php";
 
 $secret  = 'CAPTCHA-SECRET';
 $sitekey = 'CAPTCHA-SITEKEY';
-$captcha = new \ssrpanel\HCaptcha\HCaptcha($secret, $sitekey);
+$captcha = new \SSRPanel\HCaptcha\HCaptcha($secret, $sitekey);
 
 if (! empty($_POST)) {
     var_dump($captcha->verifyResponse($_POST['h-captcha-response']));
