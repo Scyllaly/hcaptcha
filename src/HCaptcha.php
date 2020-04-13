@@ -115,7 +115,7 @@ class HCaptcha
     }
 
     /**
-     * Verify no-captcha response.
+     * Verify hCaptcha response.
      *
      * @param string $response
      * @param string $clientIp
@@ -150,7 +150,7 @@ class HCaptcha
     }
 
     /**
-     * Verify no-captcha response by Symfony Request.
+     * Verify hCaptcha response by Symfony Request.
      *
      * @param Request $request
      *
