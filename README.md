@@ -22,7 +22,7 @@ ssrpanel\HCaptcha\HCaptchaServiceProvider::class,
 2- The class alias to the aliases array :
 
 ```php
-'HCaptcha' => ssrpanel\HCaptcha\Facades\NoCaptcha::class,
+'HCaptcha' => ssrpanel\HCaptcha\Facades\HCaptcha::class,
 ```
 
 3- Publish the config file
