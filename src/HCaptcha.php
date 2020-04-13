@@ -140,7 +140,7 @@ class HCaptcha
         ]);
 
         if (isset($verifyResponse['success']) && $verifyResponse['success'] === true) {
-            // A response can only be verified once from google, so we need to
+            // A response can only be verified once from hCaptcha, so we need to
             // cache it to make it work in case we want to verify it multiple times.
             $this->verifiedResponses[] = $response;
             return true;
