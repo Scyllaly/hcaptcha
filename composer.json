@@ -1,5 +1,5 @@
 {
-    "name": "ssrpanel/hcaptcha",
+    "name": "SSRPanel/HCaptcha",
     "description": "hCaptcha For Laravel5.x",
     "keywords": ["ssrpanel", "hcaptcha", "captcha", "laravel", "laravel5"],
     "license": "MIT",
@@ -19,7 +19,7 @@
     },
     "autoload": {
         "psr-4": {
-            "ssrpanel\\hCaptcha\\": "src/"
+            "SSRPanel\\HCaptcha\\": "src/"
         }
     }
 }
