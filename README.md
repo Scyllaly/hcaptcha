@@ -4,7 +4,7 @@ Project based on [laravel-reCAPTCHA](https://github.com/Dylanchouxd/laravel-reCA
 ## Installation
 
 ```
-composer require ssrpanel/hcaptcha
+composer require scyllaly/hcaptcha
 ```
 
 ## Laravel 5 and above
@@ -16,19 +16,19 @@ In `app/config/app.php` add the following :
 1- The ServiceProvider to the providers array :
 
 ```php
-SSRPanel\HCaptcha\HCaptchaServiceProvider::class,
+Scyllaly\HCaptcha\HCaptchaServiceProvider::class,
 ```
 
 2- The class alias to the aliases array :
 
 ```php
-'HCaptcha' => SSRPanel\HCaptcha\Facades\HCaptcha::class,
+'HCaptcha' => Scyllaly\HCaptcha\Facades\HCaptcha::class,
 ```
 
 3- Publish the config file
 
 ```ssh
-php artisan vendor:publish --provider="SSRPanel\HCaptcha\HCaptchaServiceProvider"
+php artisan vendor:publish --provider="Scyllaly\HCaptcha\HCaptchaServiceProvider"
 ```
 
 ### Configuration
@@ -40,7 +40,7 @@ HCAPTCHA_SECRET=secret-key
 HCAPTCHA_SITEKEY=site-key
 ```
 
-(You can obtain them from [here](https://www.google.com/recaptcha/admin))
+(You can obtain them from [here](https://docs.hcaptcha.com/api#getapikey))
 
 ### Usage
 
@@ -52,7 +52,7 @@ With default options :
  {!! HCaptcha::renderJs() !!}
 ```
 
-With [language support](https://developers.google.com/recaptcha/docs/language) or [onloadCallback](https://developers.google.com/recaptcha/docs/display#explicit_render) option :
+With [language support](https://docs.hcaptcha.com/configuration) or [onloadCallback](https://docs.hcaptcha.com/configuration) option :
 
 ```php
  {!! HCaptcha::renderJs('fr', true, 'recaptchaCallback') !!}
@@ -163,7 +163,7 @@ require_once "vendor/autoload.php";
 
 $secret  = 'CAPTCHA-SECRET';
 $sitekey = 'CAPTCHA-SITEKEY';
-$captcha = new \SSRPanel\HCaptcha\HCaptcha($secret, $sitekey);
+$captcha = new \Scyllaly\HCaptcha\HCaptcha($secret, $sitekey);
 
 if (! empty($_POST)) {
     var_dump($captcha->verifyResponse($_POST['h-captcha-response']));
