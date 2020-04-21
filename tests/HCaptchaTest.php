@@ -1,6 +1,6 @@
 <?php
 
-use SSRPanel\HCaptcha\HCaptcha;
+use Scyllaly\HCaptcha\HCaptcha;
 
 class HCaptchaTest extends PHPUnit_Framework_TestCase
 {
