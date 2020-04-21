@@ -1,12 +1,12 @@
 {
-    "name": "SSRPanel/HCaptcha",
+    "name": "Scyllaly/HCaptcha",
     "description": "hCaptcha For Laravel5.x",
-    "keywords": ["ssrpanel", "hcaptcha", "captcha", "laravel", "laravel5"],
+    "keywords": ["hcaptcha", "captcha", "laravel", "laravel5"],
     "license": "MIT",
     "authors": [
         {
-            "name": "ssrpanel",
-            "email": "admin@ssrpanel.com"
+            "name": "Scyllaly",
+            "email": "scyllaly@github.com"
         }
     ],
     "require": {
@@ -19,7 +19,7 @@
     },
     "autoload": {
         "psr-4": {
-            "SSRPanel\\HCaptcha\\": "src/"
+            "Scyllaly\\HCaptcha\\": "src/"
         }
     }
 }
