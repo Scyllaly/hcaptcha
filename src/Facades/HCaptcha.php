@@ -1,6 +1,6 @@
 <?php
 
-namespace SSRPanel\HCaptcha\Facades;
+namespace Scyllaly\HCaptcha\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
