@@ -82,11 +82,11 @@ callback submit the form on a successful captcha verification.
 
 #### Validation
 
-Add `'h-captcha-response' => 'required|captcha'` to rules array :
+Add `'h-captcha-response' => 'required|HCaptcha'` to rules array :
 
 ```php
 $validate = Validator::make(Input::all(), [
-	'h-captcha-response' => 'required|captcha'
+	'h-captcha-response' => 'required|HCaptcha'
 ]);
 
 ```
