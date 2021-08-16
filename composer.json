@@ -20,5 +20,15 @@
         "psr-4": {
             "Scyllaly\\HCaptcha\\": "src/"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Scyllaly\\HCaptcha\\HCaptchaServiceProvider"
+            ],
+            "aliases": {
+                "HCaptcha": "Scyllaly\\HCaptcha\\Facades\\HCaptcha"
+            }
+        }
     }
 }
