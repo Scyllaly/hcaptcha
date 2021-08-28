@@ -68,6 +68,8 @@ class HCaptchaServiceProvider extends ServiceProvider
                 );
             }
         });
+
+        $this->app->alias('HCaptcha', HCaptcha::class);
     }
 
     /**
