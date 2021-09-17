@@ -55,10 +55,10 @@ With default options :
 With [language support](https://docs.hcaptcha.com/configuration) or [onloadCallback](https://docs.hcaptcha.com/configuration) option :
 
 ```php
- {!! HCaptcha::renderJs('fr', true, 'recaptchaCallback') !!}
+ {!! HCaptcha::renderJs('fr', true, 'hcaptchaCallback') !!}
 ```
 
-#### Display reCAPTCHA
+#### Display hCAPTCHA
 
 Default widget :
 
@@ -72,7 +72,7 @@ With [custom attributes](https://docs.hcaptcha.com/configuration#themes) (theme,
 {!! HCaptcha::display(['data-theme' => 'dark']) !!}
 ```
 
-Invisible reCAPTCHA using a [submit button](https://docs.hcaptcha.com/configuration#themes):
+Invisible hCAPTCHA using a [submit button](https://docs.hcaptcha.com/configuration#themes):
 
 ```php
 {!! HCaptcha::displaySubmit('my-form-id', 'submit now!', ['data-theme' => 'dark']) !!}
