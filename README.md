@@ -142,7 +142,7 @@ HCaptcha::shouldReceive('verifyResponse')
     ->once()
     ->andReturn(true);
 
-// POST request, with request body including g-recaptcha-response
+// POST request, with request body including `h-captcha-response`
 $response = $this->json('POST', '/register', [
     'h-captcha-response' => '1',
     'name' => 'John',
