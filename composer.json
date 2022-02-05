@@ -1,7 +1,11 @@
 {
     "name": "scyllaly/hcaptcha",
     "description": "hCaptcha for Laravel",
-    "keywords": ["hcaptcha", "captcha", "laravel"],
+    "keywords": [
+        "hcaptcha",
+        "captcha",
+        "laravel"
+    ],
     "license": "MIT",
     "authors": [
         {
@@ -11,10 +15,10 @@
     ],
     "require": {
         "php": ">=5.5.5",
-        "illuminate/support": "5.*|6.*|7.*|8.*"
+        "illuminate/support": "5.*|6.*|7.*|8.*|^9.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "~4.8"
+        "phpunit/phpunit": "~4.8|^9.5.10"
     },
     "autoload": {
         "psr-4": {
