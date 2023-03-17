@@ -99,7 +99,7 @@ Add the following values to the `custom` array in the `validation` language file
 'custom' => [
     'h-captcha-response' => [
         'required' => 'Please verify that you are not a robot.',
-        'captcha' => 'Captcha error! try again later or contact site admin.',
+        'h_captcha' => 'Captcha error! try again later or contact site admin.',
     ],
 ],
 ```
