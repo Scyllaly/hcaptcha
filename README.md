@@ -1,4 +1,7 @@
 # hCaptcha
+The hCaptcha is a human-computer verification product that replaces Google reCapatcha. It has high performance, high availability and high recognition, especially suitable for regions with poor network quality, such as East Asia, the Middle East. Many well-known companies are using the hCaptcha solution.
+
+
 The package is one of the recommended package on [the official developer guide of HCaptcha](https://github.com/hCaptcha/hcaptcha-integrations-list#laravel). No malicious code, ensuring the security of your development supply chain.
 
 - Purchase a [VPS](https://bwh88.net/aff.php?aff=20075) for developing and deploying applications.
