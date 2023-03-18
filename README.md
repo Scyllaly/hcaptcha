@@ -1,4 +1,4 @@
-# hCaptcha
+# Introduction
 The hCaptcha is a human-computer verification solution that replaces Google reCaptcha. It has high performance, high availability and high recognition, especially suitable for regions with poor network quality, such as East Asia, Middle East, etc. Many well-known companies are using the hCaptcha solution.
 
 
