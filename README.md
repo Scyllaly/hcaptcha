@@ -42,8 +42,9 @@ HCAPTCHA_SECRET=secret-key
 HCAPTCHA_SITEKEY=site-key
 ```
 
-(You can obtain them from [here](https://docs.hcaptcha.com/api#getapikey))
-(If you do not have an account, please [sign up](https://hCaptcha.com/?r=d315c350eeee) it first).
+(You can obtain them from [Official Developer Guide](https://docs.hcaptcha.com/api#getapikey))
+
+- Tips: If you do not have an account, please [sign up](https://hCaptcha.com/?r=d315c350eeee) it first.
 
 ### Usage
 
