@@ -1,5 +1,5 @@
 # hCaptcha
-Recommended package on the official website of HCaptcha.
+Recommended package on (the official developer guide of HCaptcha)[https://github.com/hCaptcha/hcaptcha-integrations-list#laravel].
 
 - Purchase a [VPS](https://bwh88.net/aff.php?aff=20075) for developing and building applications
 
