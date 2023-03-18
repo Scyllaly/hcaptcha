@@ -1,5 +1,7 @@
 # hCaptcha
-Project based on [laravel-reCAPTCHA](https://github.com/Dylanchouxd/laravel-reCAPTCHA) development.
+Recommended package on the official website of HCaptcha.
+
+- Purchase a [VPS](https://bwh88.net/aff.php?aff=20075) for developing and building applications
 
 ## Installation
 
