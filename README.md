@@ -74,7 +74,7 @@ With [custom attributes](https://docs.hcaptcha.com/configuration#themes) (theme,
 {!! HCaptcha::display(['data-theme' => 'dark']) !!}
 ```
 
-Invisible hCAPTCHA using a [submit button](https://docs.hcaptcha.com/configuration#themes):
+Invisible hCaptcha using a [submit button](https://docs.hcaptcha.com/configuration#themes):
 
 ```php
 {!! HCaptcha::displaySubmit('my-form-id', 'submit now!', ['data-theme' => 'dark']) !!}
