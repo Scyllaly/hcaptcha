@@ -15,21 +15,21 @@ composer require scyllaly/hcaptcha
 
 In `app/config/app.php` add the following :
 
-1- The ServiceProvider to the providers array :
+Step 1: The ServiceProvider to the providers array :
 
 ```php
 Scyllaly\HCaptcha\HCaptchaServiceProvider::class,
 ```
 
-2- The class alias to the aliases array :
+Step 2: The class alias to the aliases array :
 
 ```php
 'HCaptcha' => Scyllaly\HCaptcha\Facades\HCaptcha::class,
 ```
 
-3- Publish the config file
+Step 3: Publish the config file
 
-```ssh
+```Shell
 php artisan vendor:publish --provider="Scyllaly\HCaptcha\HCaptchaServiceProvider"
 ```
 
@@ -60,7 +60,7 @@ With [language support](https://docs.hcaptcha.com/configuration) or [onloadCallb
  {!! HCaptcha::renderJs('fr', true, 'hcaptchaCallback') !!}
 ```
 
-#### Display hCAPTCHA
+#### Display hCaptcha
 
 Default widget :
 
@@ -147,8 +147,8 @@ HCaptcha::shouldReceive('verifyResponse')
 // POST request, with request body including `h-captcha-response`
 $response = $this->json('POST', '/register', [
     'h-captcha-response' => '1',
-    'name' => 'John',
-    'email' => 'john@example.com',
+    'name' => 'Scyllaly',
+    'email' => 'Scyllaly@example.com',
     'password' => '123456',
     'password_confirmation' => '123456',
 ]);
