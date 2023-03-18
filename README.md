@@ -4,7 +4,7 @@ The hCaptcha is a human-computer verification solution that replaces Google reCa
 
 The package is one of the recommended package on [the official developer guide of HCaptcha](https://github.com/hCaptcha/hcaptcha-integrations-list#laravel). No malicious code, ensuring the security of your development supply chain.
 
-- Purchase a [VPS](https://bwh88.net/aff.php?aff=20075) for developing and deploying applications.
+- Purchase a [VPS](https://bwh88.net/aff.php?aff=20075) or [Akamai VPS](https://www.linode.com/lp/refer/?r=2d4a0088743a2a06e3405514d486b8966c51a439) for developing and deploying applications.
 
 ## Installation
 
