@@ -2,6 +2,7 @@
 
 namespace Scyllaly\HCaptcha;
 
+use http\Exception\RuntimeException;
 use Symfony\Component\HttpFoundation\Request;
 use GuzzleHttp\Client;
 
@@ -141,7 +142,13 @@ class HCaptcha
 
         if (isset($verifyResponse['success']) && $verifyResponse['success'] === true) {
             // Check score if it's enabled.
-            if (config('HCaptcha.score_verification_enabled', false) && $verifyResponse['score'] > config('HCaptcha.score_threshold', 0.7)) {
+            $isScoreVerificationEnabled = config('HCaptcha.score_verification_enabled', false);
+
+            if ($isScoreVerificationEnabled && !array_key_exists('score', $verifyResponse)) {
+                throw new RuntimeException('Score Verification is an exclusive Enterprise feature! Moreover, make sure you are sending the remoteip in your request payload!');
+            }
+
+            if ($isScoreVerificationEnabled && $verifyResponse['score'] > config('HCaptcha.score_threshold', 0.7)) {
                 return false;
             }
 
