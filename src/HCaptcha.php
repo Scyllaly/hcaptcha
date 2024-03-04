@@ -35,7 +35,14 @@ class HCaptcha
      * @var array
      */
     protected $verifiedResponses = [];
-
+    
+    /**
+     * @var null
+     * lastScore
+     */
+    protected $lastScore = null;
+    
+    
     /**
      * HCaptcha.
      *
@@ -140,6 +147,7 @@ class HCaptcha
         ]);
 
         if (isset($verifyResponse['success']) && $verifyResponse['success'] === true) {
+            $this->lastScore = isset($verifyResponse['score']) ? $verifyResponse['score'] : null;
             // Check score if it's enabled.
             $isScoreVerificationEnabled = config('HCaptcha.score_verification_enabled', false);
 
@@ -193,6 +201,16 @@ class HCaptcha
         $lang ? $params['hl'] = $lang : null;
 
         return $client_api . '?' . http_build_query($params);
+    }
+    
+    /**
+     * Get the score from the last successful hCaptcha verification.
+     *
+     * @return float|null The score of the last verification or null if not available.
+     */
+    public function getScoreFromLastVerification()
+    {
+        return $this->lastScore;
     }
 
     /**
