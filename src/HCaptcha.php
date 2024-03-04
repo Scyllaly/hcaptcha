@@ -134,38 +134,36 @@ class HCaptcha
         if (empty($response)) {
             return false;
         }
-
-        // Return true if response already verfied before.
+        
         if (in_array($response, $this->verifiedResponses)) {
             return true;
         }
-
+        
         $verifyResponse = $this->sendRequestVerify([
-            'secret'   => $this->secret,
+            'secret' => $this->secret,
             'response' => $response,
             'remoteip' => $clientIp,
         ]);
-
-        if (isset($verifyResponse['success']) && $verifyResponse['success'] === true) {
-            $this->lastScore = isset($verifyResponse['score']) ? $verifyResponse['score'] : null;
-            // Check score if it's enabled.
-            $isScoreVerificationEnabled = config('HCaptcha.score_verification_enabled', false);
-
-            if ($isScoreVerificationEnabled && !array_key_exists('score', $verifyResponse)) {
-                throw new \RuntimeException('Score Verification is an exclusive Enterprise feature! Moreover, make sure you are sending the remoteip in your request payload!');
-            }
-
-            if ($isScoreVerificationEnabled && $verifyResponse['score'] > config('HCaptcha.score_threshold', 0.7)) {
-                return false;
-            }
-
-            // A response can only be verified once from hCaptcha, so we need to
-            // cache it to make it work in case we want to verify it multiple times.
+        
+        if (isset($verifyResponse['success']) && $verifyResponse['success']) {
             $this->verifiedResponses[] = $response;
+            
+            // Handle score if enabled and available
+            $this->lastScore = isset($verifyResponse['score']) ? $verifyResponse['score'] : null;
+            if ($this->isScoreVerificationEnabled()) {
+                if (!isset($verifyResponse['score'])) {
+                    throw new \RuntimeException('Score verification enabled but score is missing from the response.');
+                }
+                
+                if (!$this->isScoreAcceptable($verifyResponse['score'])) {
+                    return false;
+                }
+            }
+            
             return true;
-        } else {
-            return false;
         }
+        
+        return false;
     }
 
     /**
@@ -204,13 +202,34 @@ class HCaptcha
     }
     
     /**
+     * Check if the score is above the acceptable threshold.
+     *
+     * @param float $score
+     * @return bool
+     */
+    protected function isScoreAcceptable($score)
+    {
+        return $score > config('HCaptcha.score_threshold', 0.7);
+    }
+    
+    /**
      * Get the score from the last successful hCaptcha verification.
      *
-     * @return float|null The score of the last verification or null if not available.
+     * @return float|null The score or null if not available.
      */
     public function getScoreFromLastVerification()
     {
         return $this->lastScore;
+    }
+    
+    /**
+     * Check if score verification is enabled.
+     *
+     * @return bool
+     */
+    protected function isScoreVerificationEnabled()
+    {
+        return config('HCaptcha.score_verification_enabled', false);
     }
 
     /**
