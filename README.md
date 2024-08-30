@@ -38,11 +38,12 @@ php artisan vendor:publish --provider="Scyllaly\HCaptcha\HCaptchaServiceProvider
 
 ### Configuration
 
-Add `HCAPTCHA_SECRET` and `HCAPTCHA_SITEKEY` in **.env** file :
+Add `HCAPTCHA_SECRET`, `HCAPTCHA_SITEKEY` and `HCAPTCHA_ENABLED` in **.env** file :
 
 ```
 HCAPTCHA_SECRET=secret-key
 HCAPTCHA_SITEKEY=site-key
+HCAPTCHA_ENABLED=true
 ```
 
 (You can obtain them from [Official Developer Guide](https://docs.hcaptcha.com/api#getapikey))
@@ -89,14 +90,40 @@ callback submit the form on a successful captcha verification.
 
 #### Validation
 
-Add `'h-captcha-response' => 'required|HCaptcha'` to rules array :
+There are two ways to apply HCaptcha validation to your form:
+
+#### 1. Basic Approach
+
+This method always applies the HCaptcha validation rule.
 
 ```php
 $validate = Validator::make(Input::all(), [
-	'h-captcha-response' => 'required|HCaptcha'
+    'h-captcha-response' => 'required|HCaptcha'
 ]);
 
 ```
+
+In this approach, the `h-captcha-response` field is required and validated using the `HCaptcha` rule without any conditions.
+
+#### 2. Conditional Approach
+
+This method applies the HCaptcha validation rule only if the `HCAPTCHA_ENABLED` environment variable is set to `true`.
+
+```php
+$isHcaptchaEnabled = env('HCAPTCHA_ENABLED');
+$rules = [
+    // Other validation rules...
+];
+
+if ($isHcaptchaEnabled) {
+    $rules['h-captcha-response'] = 'required|HCaptcha';
+}
+
+$request->validate($rules);
+
+```
+
+In this approach, the `h-captcha-response` field will be required and validated using the `HCaptcha` rule only when `HCAPTCHA_ENABLED` is set to `true`. This adds flexibility to your validation logic, allowing you to enable or disable HCaptcha validation as needed.
 
 ##### Custom Validation Message
 
