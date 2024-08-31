@@ -35,26 +35,34 @@ class HCaptcha
      * @var array
      */
     protected $verifiedResponses = [];
-    
+
     /**
      * @var null
      * lastScore
      */
     protected $lastScore = null;
-    
-    
+
+    /**
+     * Whether to use hCaptcha or not.
+     *
+     * @var bool
+     */
+    protected $enabled;
+
     /**
      * HCaptcha.
      *
      * @param string $secret
      * @param string $sitekey
      * @param array  $options
+     * @param bool   $enabled
      */
-    public function __construct($secret, $sitekey, $options = [])
+    public function __construct($secret, $sitekey, $options = [], $enabled = true)
     {
         $this->secret = $secret;
         $this->sitekey = $sitekey;
         $this->http = new Client($options);
+        $this->enabled = $enabled;
     }
 
     /**
@@ -66,6 +74,10 @@ class HCaptcha
      */
     public function display($attributes = [])
     {
+        if (!$this->enabled) {
+            return '';
+        }
+
         $attributes = $this->prepareAttributes($attributes);
         return '<div' . $this->buildAttributes($attributes) . '></div>';
     }
@@ -89,6 +101,10 @@ class HCaptcha
      */
     public function displaySubmit($formIdentifier, $text = 'submit', $attributes = [])
     {
+        if (!$this->enabled) {
+            return sprintf('<button%s><span>%s</span></button>', $this->buildAttributes($attributes), $text);
+        }
+
         $javascript = '';
         if (!isset($attributes['data-callback'])) {
             $functionName = 'onSubmit' . str_replace(['-', '=', '\'', '"', '<', '>', '`'], '', $formIdentifier);
@@ -118,6 +134,10 @@ class HCaptcha
      */
     public function renderJs($lang = null, $callback = false, $onLoadClass = 'onloadCallBack')
     {
+        if (!$this->enabled) {
+            return '';
+        }
+
         return '<script src="' . $this->getJsLink($lang, $callback, $onLoadClass) . '" async defer></script>' . "\n";
     }
 
@@ -131,11 +151,15 @@ class HCaptcha
      */
     public function verifyResponse($response, $clientIp = null)
     {
+        if (!$this->enabled) {
+            return true; // Always true if hCaptcha is disabled
+        }
+
         if (empty($response)) {
             return false;
         }
 
-        // Return true if response already verfied before.
+        // Return true if response already verified before.
         if (in_array($response, $this->verifiedResponses)) {
             return true;
         }
@@ -194,6 +218,10 @@ class HCaptcha
      */
     public function getJsLink($lang = null, $callback = false, $onLoadClass = 'onloadCallBack')
     {
+        if (!$this->enabled) {
+            return '';
+        }
+
         $client_api = static::CLIENT_API;
         $params = [];
 
@@ -202,7 +230,7 @@ class HCaptcha
 
         return $client_api . '?' . http_build_query($params);
     }
-    
+
     /**
      * Get the score from the last successful hCaptcha verification.
      *

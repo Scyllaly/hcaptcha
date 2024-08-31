@@ -58,13 +58,15 @@ class HCaptchaServiceProvider extends ServiceProvider
                 return new HCaptcha(
                     $hCaptcha['secret'],
                     $hCaptcha['sitekey'],
-                    $hCaptcha['options']
+                    $hCaptcha['options'],
+                    $hCaptcha['enabled'],
                 );
             } else {
                 return new HCaptcha(
                     $app['config']['HCaptcha.secret'],
                     $app['config']['HCaptcha.sitekey'],
-                    $app['config']['HCaptcha.options']
+                    $app['config']['HCaptcha.options'],
+                    $app['config']['HCaptcha.enabled'],
                 );
             }
         });
